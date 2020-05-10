@@ -1,0 +1,200 @@
+<<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Grocery Shop</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+</head>
+<body>
+    <script>
+      /*
+        1.total available items name
+        2.total available items amount
+        3.items which are out of stock
+        4.all items (including out of stock)
+        5.particular item detail by their name
+        6.total item sold
+        7.item rate greater then 100 rupees
+        8.item rate lesser then 100 rupees
+        9.item according to their type(which means biscuits, choclate,etc)
+        10.Coming soon items
+    */
+        let shopItems=[
+            {
+                id:1,
+                title:"Parley G Biscuit",
+                category:"Biscuit",
+                price:150,
+                status:"in stock",
+                total_item_sold:20,
+            },
+            {
+                id:2,
+                title:"Kitkat",
+                category:"Chocolate",
+                price:60,
+                status:"in stock",
+                total_item_sold:10,
+            },
+            {
+                id:3,
+                title:"Oreo",
+                category:"Biscuit",
+                price:30,
+                status:"out of stock",
+                total_item_sold:30,
+            },
+            {
+                id:4,
+                title:"Dairy Milk",
+                category:"Chocolate",
+                price:120,
+                status:"in stock",
+                total_item_sold:50,
+            }, 
+            {
+                id:5,
+                title:"Dark Fantasy Biscuit",
+                category:"Biscuit",
+                price:80,
+                status:"in stock",
+                total_item_sold:15,
+            },
+            {
+                id:6,
+                title:"Zandu Pure Honey ",
+                category:"Honey",
+                price:50,
+                status:"in stock",
+                total_item_sold:0,
+            },
+            {
+                id:7,
+                title:"Hide & Sick",
+                category:"Biscuit",
+                price:100,
+                status:"out of stock",
+                total_item_sold:20,
+            },
+            {
+                id:8,
+                title:"Dabur Honey",
+                category:"Honey",
+                price:395,
+                status:"in stock",
+                total_item_sold:20,
+            }, 
+            {
+                id:9,
+                title:"Park",
+                category:"Chocolate",
+                price:320,
+                status:"coming soon",
+                total_item_sold:0,
+            },
+            {
+                id:10,
+                title:"Organic India Forest Honey",
+                category:"Honey",
+                price:390,
+                status:"in stock",
+                total_item_sold:20,
+            },
+            {
+                id:11,
+                title:"Maggi 2-Minute Instant Noodles",
+                category:"Maggi",
+                price:67,
+                status:"coming soon",
+                total_item_sold:20,
+            },
+            
+            
+        ];
+        class GroceryShop{
+            constructor(shopItems){
+                //console.log(shopItems);
+                shopItems=this.shopItems;
+            }
+            get_all_item_names(){
+                //console.log(shopItems);
+                let all_items=shopItems.map((shopItem)=>{
+                    return shopItem.title;
+                });
+                return all_items;
+            }
+            get_total_amount_of_available_items(){
+                let total=shopItems.reduce((total,shopItem)=>{
+                       /* if(shopItem.status==="in stock"){
+                            total+=shopItem.price;
+                        }
+                        */
+                        shopItem.status==="in stock"? total+=shopItem.price:"";
+                        return total;
+                },0);
+                return total;
+            }
+            get_out_of_stock_items(){
+                let out_of_stock_items=shopItems.filter(shopItem=>{
+                    return shopItem.status==="out of stock";
+                });
+                return out_of_stock_items;
+            }
+            get_all_items(){
+                return shopItems;
+            }
+            get_items_according_to_name(itemName){
+                let item=shopItems.find(shopItem=>{
+                    return shopItem.title===itemName;
+                })
+                return item;
+            }
+            total_item_sold(){
+                let total=shopItems.reduce((total,shopItem)=>{
+                   shopItem.total_item_sold > 0 ? total+=shopItem.total_item_sold:"";
+                   return total;
+                },0);
+                return total;
+            }
+            item_rate_greater_then_100_rupees(){
+                let items=shopItems.filter(shopItem=>{
+                    return shopItem.price>100;
+                })
+                return items;
+            }
+            item_rate_less_then_100_rupees(){
+                let items=shopItems.filter(shopItem=>{
+                    return shopItem.price<100;
+                })
+                return items;
+            }
+            items_according_to_type(type){
+                let items=shopItems.filter(shopItem=>{
+                    return shopItem.category===type;
+                });
+                return items;
+            }   
+            get_coming_soon_items(){
+                let coming_soon_items=shopItems.filter(shopItem=>{
+                    return shopItem.status==="coming soon";
+                });
+                return coming_soon_items;
+            }         
+
+        }
+        var gShop=new GroceryShop(shopItems);
+
+        // console.log(gShop.get_all_item_names());
+        //console.log(gShop.get_total_amount_of_available_items())
+        //console.log(gShop.get_out_of_stock_items());
+        //console.log(gShop.get_all_items());
+        //console.log(gShop.get_items_according_to_name("Oreo"));
+        //console.log(gShop.total_item_sold());
+        //console.log(gShop.item_rate_greater_then_100_rupees());
+        //console.log(gShop.item_rate_less_then_100_rupees());
+       // console.log(gShop.items_according_to_type("Chocolate"));
+       //console.log(gShop.get_coming_soon_items());
+    </script>
+</body>
+</html>
