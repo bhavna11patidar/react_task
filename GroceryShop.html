@@ -1,4 +1,4 @@
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -28,6 +28,7 @@
                 price:150,
                 status:"in stock",
                 total_item_sold:20,
+                coming_soon:true,
             },
             {
                 id:2,
@@ -36,6 +37,7 @@
                 price:60,
                 status:"in stock",
                 total_item_sold:10,
+                coming_soon:true,
             },
             {
                 id:3,
@@ -44,6 +46,7 @@
                 price:30,
                 status:"out of stock",
                 total_item_sold:30,
+                coming_soon:false,
             },
             {
                 id:4,
@@ -52,6 +55,7 @@
                 price:120,
                 status:"in stock",
                 total_item_sold:50,
+                coming_soon:false,
             }, 
             {
                 id:5,
@@ -60,6 +64,7 @@
                 price:80,
                 status:"in stock",
                 total_item_sold:15,
+                coming_soon:true,
             },
             {
                 id:6,
@@ -68,6 +73,7 @@
                 price:50,
                 status:"in stock",
                 total_item_sold:0,
+                coming_soon:false,
             },
             {
                 id:7,
@@ -76,6 +82,7 @@
                 price:100,
                 status:"out of stock",
                 total_item_sold:20,
+                coming_soon:false,
             },
             {
                 id:8,
@@ -84,14 +91,16 @@
                 price:395,
                 status:"in stock",
                 total_item_sold:20,
+                coming_soon:false,
             }, 
             {
                 id:9,
                 title:"Park",
                 category:"Chocolate",
                 price:320,
-                status:"coming soon",
+                status:"in stock",
                 total_item_sold:0,
+                coming_soon:false,
             },
             {
                 id:10,
@@ -100,14 +109,16 @@
                 price:390,
                 status:"in stock",
                 total_item_sold:20,
+                coming_soon:true,
             },
             {
                 id:11,
                 title:"Maggi 2-Minute Instant Noodles",
                 category:"Maggi",
                 price:67,
-                status:"coming soon",
+                status:"in stock",
                 total_item_sold:20,
+                coming_soon:false,
             },
             
             
@@ -115,86 +126,89 @@
         class GroceryShop{
             constructor(shopItems){
                 //console.log(shopItems);
-                shopItems=this.shopItems;
+                this.shopItems=shopItems;
             }
             get_all_item_names(){
-                //console.log(shopItems);
-                let all_items=shopItems.map((shopItem)=>{
+                //console.log(this.shopItems);
+                let all_items=this.shopItems.map((shopItem)=>{  
                     return shopItem.title;
                 });
-                return all_items;
+                console.log("All Items name");
+                console.log(all_items);
             }
             get_total_amount_of_available_items(){
-                let total=shopItems.reduce((total,shopItem)=>{
-                       /* if(shopItem.status==="in stock"){
-                            total+=shopItem.price;
-                        }
-                        */
+                let total=this.shopItems.reduce((total,shopItem)=>{
                         shopItem.status==="in stock"? total+=shopItem.price:"";
                         return total;
                 },0);
-                return total;
+                console.log(`Total amount of available items ${total}`);
             }
             get_out_of_stock_items(){
-                let out_of_stock_items=shopItems.filter(shopItem=>{
+                let out_of_stock_items=this.shopItems.filter(shopItem=>{
                     return shopItem.status==="out of stock";
                 });
-                return out_of_stock_items;
+                console.log("Out of Stock Items");
+                console.log(out_of_stock_items);
             }
             get_all_items(){
-                return shopItems;
+                console.log("All Items");
+                console.log(this.shopItems);
             }
             get_items_according_to_name(itemName){
-                let item=shopItems.find(shopItem=>{
+                let item=this.shopItems.find(shopItem=>{
                     return shopItem.title===itemName;
                 })
-                return item;
+                console.log("Particular item Details");
+                console.log(item)
             }
             total_item_sold(){
-                let total=shopItems.reduce((total,shopItem)=>{
+                let total=this.shopItems.reduce((total,shopItem)=>{
                    shopItem.total_item_sold > 0 ? total+=shopItem.total_item_sold:"";
                    return total;
                 },0);
-                return total;
+                console.log(`Total Sold Items : ${total}`);
             }
             item_rate_greater_then_100_rupees(){
-                let items=shopItems.filter(shopItem=>{
+                let items=this.shopItems.filter(shopItem=>{
                     return shopItem.price>100;
                 })
-                return items;
+                console.log("Items with price greater than 100")
+                console.log(items);
             }
             item_rate_less_then_100_rupees(){
-                let items=shopItems.filter(shopItem=>{
+                let items=this.shopItems.filter(shopItem=>{
                     return shopItem.price<100;
                 })
-                return items;
+                console.log("Items with price less than 100")
+                console.log(items);
             }
             items_according_to_type(type){
-                let items=shopItems.filter(shopItem=>{
+                let items=this.shopItems.filter(shopItem=>{
                     return shopItem.category===type;
                 });
                 return items;
             }   
             get_coming_soon_items(){
-                let coming_soon_items=shopItems.filter(shopItem=>{
-                    return shopItem.status==="coming soon";
+                let coming_soon_items=this.shopItems.filter(shopItem=>{
+                    return shopItem.coming_soon===true;
                 });
-                return coming_soon_items;
+                console.log("Coming Soon Items");
+                console.log(coming_soon_items);
             }         
 
         }
         var gShop=new GroceryShop(shopItems);
 
-        // console.log(gShop.get_all_item_names());
-        //console.log(gShop.get_total_amount_of_available_items())
-        //console.log(gShop.get_out_of_stock_items());
-        //console.log(gShop.get_all_items());
-        //console.log(gShop.get_items_according_to_name("Oreo"));
-        //console.log(gShop.total_item_sold());
-        //console.log(gShop.item_rate_greater_then_100_rupees());
-        //console.log(gShop.item_rate_less_then_100_rupees());
-       // console.log(gShop.items_according_to_type("Chocolate"));
-       //console.log(gShop.get_coming_soon_items());
+        gShop.get_all_item_names();
+        gShop.get_total_amount_of_available_items()
+        gShop.get_out_of_stock_items()
+        gShop.get_all_items()
+        gShop.get_items_according_to_name("Oreo")
+        gShop.total_item_sold();
+        gShop.item_rate_greater_then_100_rupees();
+        gShop.item_rate_less_then_100_rupees();
+        gShop.items_according_to_type("Chocolate");
+        gShop.get_coming_soon_items();
     </script>
 </body>
 </html>
