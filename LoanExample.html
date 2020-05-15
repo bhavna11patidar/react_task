@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Loan Example</title>
+</head>
+<body>
+    <script>
+    const dataset = [
+        {
+            lender:'Manu',
+            borrower:'Sahil',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Harry',
+            borrower:'sahil',
+            loanAmount:6000,
+            emi:700,
+            loanAmtPaid:1500,
+            dueDate:"2/3/20",
+            defaulter:false,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:26000,
+            loantype:'home',
+            roi:'3.6%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Manu',
+            borrower:'Bhavna',
+            loanAmount:7000,
+            emi:650,
+            loanAmtPaid:1800,
+            dueDate:"2/3/20",
+            defaulter:false,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:27000,
+            loantype:'personal',
+            roi:'4.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Deepti',
+            borrower:'sahil',
+            loanAmount:150000,
+            emi:6000,
+            loanAmtPaid:10000,
+            dueDate:"10/5/20",
+            defaulter:false,
+            loanSanctionedOnDate:"10/10/19",
+            annualIncome:250000,
+            loantype:'personal',
+            roi:'10.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Deepti',
+            borrower:'Manu',
+            loanAmount:200000,
+            emi:12000,
+            loanAmtPaid:70000,
+            dueDate:"20/2/20",
+            defaulter:false,
+            loanSanctionedOnDate:"08/11/19",
+            annualIncome:100000,
+            loantype:'personal',
+            roi:'11.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Manu',
+            borrower:'Bhavi',
+            loanAmount:500000,
+            emi:10000,
+            loanAmtPaid:300000,
+            dueDate:"05/06/22",
+            defaulter:false,
+            loanSanctionedOnDate:"11/10/19",
+            annualIncome:200000,
+            loantype:'home',
+            roi:'15%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Harry',
+            borrower:'Deepti',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Mehul',
+            borrower:'Bhavna',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/4/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mehul',
+            borrower:'sahil',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/5/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mohnish',
+            borrower:'Varsha',
+            loanAmount:60000,
+            emi:600,
+            loanAmtPaid:60000,
+            dueDate:"2/4/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mohnish',
+            borrower:'Bhavna',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mehul',
+            borrower:'Varsha',
+            loanAmount:10000,
+            emi:600,
+            loanAmtPaid:10000,
+            dueDate:"20/9/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Mehul',
+            borrower:'sahil',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:2000,
+            dueDate:"12/5/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'13.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mehul',
+            borrower:'Rahul',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:4000,
+            dueDate:"21/7/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mohnish',
+            borrower:'Nikita',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mehul',
+            borrower:'Hiral',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:1000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mehul',
+            borrower:'Jinal',
+            loanAmount:45000,
+            emi:600,
+            loanAmtPaid:10000,
+            dueDate:"20/8/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'3.5%',
+            transaction:'cashless'
+        },
+        {
+            lender:'Mohnish',
+            borrower:'Ronak',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:5000,
+            dueDate:"2/6/20",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'personal',
+            roi:'10.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Harry',
+            borrower:'Bhavna',
+            loanAmount:50000,
+            emi:600,
+            loanAmtPaid:10000,
+            dueDate:"2/3/21",
+            defaulter:true,
+            loanSanctionedOnDate:"1/1/19",
+            annualIncome:25000,
+            loantype:'Personal',
+            roi:'3.5%',
+            transaction:'cash'
+        },
+        {
+            lender:'Manu',
+            borrower:'Ronak',
+            loanAmount:5000,
+            emi:600,
+            loanAmtPaid:5000,
+            dueDate:"2/3/20",
+            defaulter:true,
+            loanSanctionedOnDate:"10/1/19",
+            annualIncome:25000,
+            loantype:'home',
+            roi:'12.5%',
+            transaction:'cashless'
+        }
+    ];
+        class LoanExample{
+            constructor(dataset){
+                this.dataset=dataset;
+                this.total_loan_amount=dataset.reduce((sum,data)=>{
+                    return sum+=data.loanAmount;
+                },0);
+            }
+            getDataByTheParticularLenderName(lender){
+                let new_data=this.dataset.filter(data=>{
+                    return data.lender===lender;
+                });
+                console.log("Get Data By Lender Name");
+                console.log(new_data);
+            }
+            getDataByTheParticularBorrowerName(borrower){
+                let new_data=this.dataset.filter(data=>{
+                    return data.borrower===borrower;
+                });
+                console.log("Get Data By Borrower Name");
+                console.log(new_data);
+            }
+            getDataWhoseLoanAmoutIsGreaterThenOneLakh(){
+                let new_data=this.dataset.filter(data=>{
+                    return data.loanAmount>100000;
+                });
+                console.log("Get Data Whose Loan Amount is Greater Then 1 Lakh");
+                console.log(new_data);
+            }
+            getDataWhoseTimePeriodIsBeenExpired(){
+                let new_data=this.dataset.filter(data=>{
+                    return (new Date(data.dueDate) < new Date());
+                });
+                console.log("Get Data Whose Time Period Is Been Expired!");
+                console.log(new_data);
+            }
+            getAllTheDefaulterListWithTheAmountRemaningToBePaid(){
+               /* console.log("Get All The Defaulter List With TheAmount Remaning To Be Paid");
+                let new_data=this.dataset.forEach(data => {
+                    if(data.defaulter===true && data.loanAmount!==data.loanAmtPaid){
+                        console.log(`Borrower Name = ${data.borrower} & Pending Amount= ${data.loanAmount-data.loanAmtPaid}`);
+                    }
+                });*/
+                let new_data=this.dataset.filter(data=>{
+                    return data.defaulter===true && data.loanAmount!==data.loanAmtPaid;
+                });
+                let list=new_data.map(d=>{
+                    return `Borrower Name = ${d.borrower} & Pending Amount= ${d.loanAmount-d.loanAmtPaid}`;
+                })
+                console.log("Get All The Defaulter List With TheAmount Remaning To Be Paid");
+                console.log(list);
+            } 
+            getDefaulterListWhoseOutstandingAmountIsGreaterThen10k(){
+                let new_data=this.dataset.filter(data=>{
+                    return data.defaulter===true && data.loanAmount!==data.loanAmtPaid && data.loanAmount-data.loanAmtPaid>10000;
+                });
+                let list=new_data.map(d=>{
+                    return `Borrower Name = ${d.borrower} & Pending Amount= ${d.loanAmount-d.loanAmtPaid}`;
+                })
+                console.log("Get Defaulter List Whose Outstanding Amount Is Greater Then 10k");
+                console.log(list);
+            }
+            getTotalLoanSanctionAmount(){
+                console.log(this.total_loan_amount);
+            }
+            getTotalAmountRecovered(){
+                let new_data=this.dataset.reduce((sum,data)=>{
+                    return sum+=data.loanAmtPaid;
+                },0);
+                console.log("Get Total Amount Recovered");
+                console.log(new_data);
+            }
+            getTheDataWhoseRoiIsGreaterThen5PercentAndEmiIsGreaterThen2000(){
+                let new_data=this.dataset.filter(data=>{
+                    return (data.roi.replace("%","")>5 && data.emi>2000);
+                });
+                console.log("Get The Data Whose Roi Is Greater Then 5 Percent And Emi Is Greater Then 2000");
+                console.log(new_data);
+            }
+            getTheTotalAmountWhichHasToBeRecoveredYet(){
+                let recovered_yet=this.dataset.reduce((sum,data)=>{
+                    return sum+=data.loanAmtPaid;
+                },0);
+                console.log("Get The Total Amount Which Has To Be Recovered Yet");
+                console.log(this.total_loan_amount-recovered_yet);
+            }
+            getAllTheDetailOfCashBasedTransactionAndCashlessTransaction(){
+                let data_cashBased=this.dataset.filter(data=>{
+                    return data.transaction=="cash";
+                });
+                let data_cashless=this.dataset.filter(data=>{
+                    return data.transaction=="cashless";
+                });
+                console.log(" Detail Of Cash Based Transaction");
+                console.log(data_cashBased);
+                console.log(" Detail Of Cashless Transaction");
+                console.log(data_cashless);
+            }
+        }
+        var loanExample= new LoanExample(dataset);
+        loanExample.getDataByTheParticularLenderName("Mohnish");
+        loanExample.getDataByTheParticularBorrowerName("sahil");
+        loanExample.getDataWhoseLoanAmoutIsGreaterThenOneLakh();
+        loanExample.getDataWhoseTimePeriodIsBeenExpired();
+        loanExample.getAllTheDefaulterListWithTheAmountRemaningToBePaid();
+        loanExample.getDefaulterListWhoseOutstandingAmountIsGreaterThen10k();
+        loanExample.getTotalLoanSanctionAmount();
+        loanExample.getTotalAmountRecovered();
+        loanExample.getTheDataWhoseRoiIsGreaterThen5PercentAndEmiIsGreaterThen2000();
+        loanExample.getTheTotalAmountWhichHasToBeRecoveredYet();
+        loanExample.getAllTheDetailOfCashBasedTransactionAndCashlessTransaction();
+
+    </script>
+</body>
+</html>
